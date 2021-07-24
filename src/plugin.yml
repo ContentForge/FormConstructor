@@ -1,0 +1,5 @@
+name: FormConstructor
+author: qPexLegendary
+version: 1.0.0
+api: 1.0.9
+main: ru.contentforge.formconstructor.FormConstructor
