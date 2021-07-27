@@ -9,6 +9,8 @@ import cn.nukkit.form.response.FormResponse;
 import cn.nukkit.plugin.PluginBase;
 import ru.contentforge.formconstructor.form.CloseableForm;
 import ru.contentforge.formconstructor.form.Form;
+import ru.contentforge.formconstructor.form.handler.NoneHandler;
+import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 import ru.contentforge.formconstructor.form.response.ModalFormResponse;
 import ru.contentforge.formconstructor.form.response.SimpleFormResponse;
 
@@ -33,7 +35,8 @@ public class FormConstructor extends PluginBase implements Listener {
         }
 
         if(response == null && form instanceof CloseableForm){
-            ((CloseableForm) form).getNoneHandler().handle(player);
+            NoneHandler noneHandler = ((CloseableForm) form).getNoneHandler();
+            if(noneHandler != null) noneHandler.handle(player);
             return;
         }
 
@@ -42,7 +45,12 @@ public class FormConstructor extends PluginBase implements Listener {
             return;
         }
 
-        //TODO: custom form
+        if(response instanceof CustomFormResponse){
+            ((CustomFormResponse) form.getResponse()).handle(player);
+            return;
+        }
+
+        //...
     }
 
 }
