@@ -8,6 +8,7 @@ import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CustomForm extends CloseableForm {
 
@@ -16,6 +17,7 @@ public class CustomForm extends CloseableForm {
     @SerializedName("content") protected ArrayList<CustomFormElement> elements = new ArrayList<>();
     protected transient CustomFormResponse response = null;
     protected transient CustomFormHandler handler;
+    protected final transient HashSet<String> containsId = new HashSet<>();
 
     public CustomForm(){
         this("", null);
@@ -47,6 +49,7 @@ public class CustomForm extends CloseableForm {
 
     public CustomForm addElement(String elementId, CustomFormElement element){
         element.elementId = elementId;
+        containsId.add(elementId);
         return addElement(element);
     }
 
@@ -62,7 +65,7 @@ public class CustomForm extends CloseableForm {
         Object[] result = new Gson().fromJson(data, Object[].class);
         for (int i = 0; i < elements.size(); i++) elements.get(i).respond(result[i]);
 
-        response = new CustomFormResponse(handler, elements);
+        response = new CustomFormResponse(handler, elements, containsId);
     }
 
     @Override

@@ -5,15 +5,18 @@ import ru.contentforge.formconstructor.form.element.*;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CustomFormResponse extends Response<CustomFormHandler> {
 
     protected final ArrayList<CustomFormElement> elements;
+    protected final HashSet<String> containsId;
 
-    public CustomFormResponse(CustomFormHandler handler, ArrayList<CustomFormElement> elements) {
+    public CustomFormResponse(CustomFormHandler handler, ArrayList<CustomFormElement> elements, HashSet<String> containsId) {
         super(handler, "");
 
         this.elements = elements;
+        this.containsId = containsId;
     }
 
     public CustomFormElement get(int index){
@@ -25,6 +28,10 @@ public class CustomFormResponse extends Response<CustomFormHandler> {
             if(elementId.equals(element.elementId)) return element;
         }
         return null;
+    }
+
+    public boolean containsId(String elementId){
+        return containsId.contains(elementId);
     }
 
     public <T extends CustomFormElement> T get(String elementId, Class<T> clazz){
