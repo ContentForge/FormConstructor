@@ -6,6 +6,7 @@ import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class CustomFormResponse extends Response<CustomFormHandler> {
 
@@ -38,12 +39,24 @@ public class CustomFormResponse extends Response<CustomFormHandler> {
         return clazz.cast(get(elementId));
     }
 
+    public <T extends CustomFormElement> List<T> get(Class<T> clazz){
+        ArrayList<T> list = new ArrayList<>();
+        for(CustomFormElement element: elements){
+            if(clazz.isInstance(element)) list.add(clazz.cast(element));
+        }
+        return list;
+    }
+
     public Label getLabel(int index){
         return (Label) elements.get(index);
     }
 
     public Label getLabel(String elementId){
         return get(elementId, Label.class);
+    }
+
+    public List<Label> getLabels(){
+        return get(Label.class);
     }
 
     public Input getInput(int index){
@@ -54,12 +67,20 @@ public class CustomFormResponse extends Response<CustomFormHandler> {
         return get(elementId, Input.class);
     }
 
+    public List<Input> getInputs(){
+        return get(Input.class);
+    }
+
     public Toggle getToggle(int index){
         return (Toggle) elements.get(index);
     }
 
     public Toggle getToggle(String elementId){
         return get(elementId, Toggle.class);
+    }
+
+    public List<Toggle> getToggles(){
+        return get(Toggle.class);
     }
 
     public StepSlider getStepSlider(int index){
@@ -70,12 +91,20 @@ public class CustomFormResponse extends Response<CustomFormHandler> {
         return get(elementId, StepSlider.class);
     }
 
+    public List<StepSlider> getStepSliders(){
+        return get(StepSlider.class);
+    }
+
     public Dropdown getDropdown(int index){
         return (Dropdown) elements.get(index);
     }
 
     public Dropdown getDropdown(String elementId){
         return get(elementId, Dropdown.class);
+    }
+
+    public List<Dropdown> getDropdowns(){
+        return get(Dropdown.class);
     }
 
     @Override
