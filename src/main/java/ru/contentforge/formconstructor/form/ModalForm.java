@@ -1,7 +1,7 @@
 package ru.contentforge.formconstructor.form;
 
-import cn.nukkit.form.response.FormResponse;
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 import ru.contentforge.formconstructor.form.handler.ModalFormHandler;
 import ru.contentforge.formconstructor.form.response.ModalFormResponse;
 
@@ -13,7 +13,7 @@ public class ModalForm extends Form {
     @SerializedName("button1") String positiveButton;
     @SerializedName("button2") protected String negativeButton;
     protected transient ModalFormHandler handler;
-    protected transient ModalFormResponse response = null;
+    @Getter protected transient ModalFormResponse response = null;
 
     public ModalForm(){
         this("");
@@ -78,11 +78,6 @@ public class ModalForm extends Form {
         if (data.equals("null") || handler == null) return;
 
         response = new ModalFormResponse(handler, data);
-    }
-
-    @Override
-    public FormResponse getResponse() {
-        return response;
     }
 
 }

@@ -1,7 +1,7 @@
 package ru.contentforge.formconstructor.form;
 
-import cn.nukkit.form.response.FormResponse;
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 import ru.contentforge.formconstructor.form.element.Button;
 import ru.contentforge.formconstructor.form.element.ImageType;
 import ru.contentforge.formconstructor.form.handler.NoneHandler;
@@ -14,10 +14,10 @@ import java.util.Collection;
 public class SimpleForm extends CloseableForm {
 
     @SerializedName("type") protected final String type = "form";
-    @SerializedName("title") protected String title;
-    @SerializedName("content") protected String content;
+    @Getter @SerializedName("title") protected String title;
+    @Getter @SerializedName("content") protected String content;
     @SerializedName("buttons") protected ArrayList<Button> buttons = new ArrayList<>();
-    protected transient SimpleFormResponse response = null;
+    @Getter protected transient SimpleFormResponse response = null;
     private transient int increment = 0;
 
     public SimpleForm(){
@@ -101,11 +101,6 @@ public class SimpleForm extends CloseableForm {
         if(buttonId >= buttons.size() || buttonId < 0) return;
 
         response = new SimpleFormResponse(buttons.get(buttonId));
-    }
-
-    @Override
-    public FormResponse getResponse() {
-        return response;
     }
 
 }

@@ -1,12 +1,13 @@
 package ru.contentforge.formconstructor.form.element;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 
 public class Input extends CustomFormElement {
 
-    @SerializedName("placeholder") protected final String placeholder;
-    @SerializedName("default") protected final String defaultValue;
-    protected transient String takenValue;
+    @Getter @SerializedName("placeholder") protected final String placeholder;
+    @Getter @SerializedName("default") protected final String defaultValue;
+    @Getter protected transient String value;
 
     public Input(){
         this("");
@@ -22,7 +23,7 @@ public class Input extends CustomFormElement {
 
     @Override
     public void respond(Object value) {
-        takenValue = (String) value;
+        this.value = (String) value;
     }
 
     public Input(String name, String placeholder, String defaultValue) {
@@ -30,18 +31,6 @@ public class Input extends CustomFormElement {
 
         this.placeholder = placeholder;
         this.defaultValue = defaultValue;
-    }
-
-    public String getPlaceholder() {
-        return placeholder;
-    }
-
-    public String getDefaultValue() {
-        return defaultValue;
-    }
-
-    public String getValue() {
-        return takenValue;
     }
 
 }

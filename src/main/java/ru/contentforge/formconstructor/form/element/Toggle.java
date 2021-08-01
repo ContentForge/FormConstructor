@@ -1,11 +1,12 @@
 package ru.contentforge.formconstructor.form.element;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 
 public class Toggle extends CustomFormElement {
 
-    @SerializedName("default") protected final boolean defaultValue;
-    protected transient boolean takenValue;
+    @Getter @SerializedName("default") protected final boolean defaultValue;
+    @Getter protected transient boolean value;
 
     public Toggle(){
         this("");
@@ -21,17 +22,9 @@ public class Toggle extends CustomFormElement {
         this.defaultValue = defaultValue;
     }
 
-    public boolean getDefaultValue() {
-        return defaultValue;
-    }
-
-    public boolean getValue(){
-        return takenValue;
-    }
-
     @Override
     public void respond(Object value) {
-        takenValue = (boolean) value;
+        this.value = (boolean) value;
     }
 
 }

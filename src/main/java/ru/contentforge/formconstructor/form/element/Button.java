@@ -1,12 +1,13 @@
 package ru.contentforge.formconstructor.form.element;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 import ru.contentforge.formconstructor.form.handler.SimpleFormHandler;
 
 public class Button extends FormElement {
 
-    @SerializedName("image") protected ImageButton image;
-    protected transient SimpleFormHandler handler;
+    @Getter @SerializedName("image") protected ImageButton image;
+    @Getter protected transient SimpleFormHandler handler;
 
     public Button(){
         this("");
@@ -29,14 +30,6 @@ public class Button extends FormElement {
 
         this.handler = handler;
         this.image = new ImageButton(imageType, image);
-    }
-
-    public ImageButton getImage() {
-        return image;
-    }
-
-    public SimpleFormHandler getHandler() {
-        return handler;
     }
 
 }

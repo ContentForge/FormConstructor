@@ -1,6 +1,7 @@
 package ru.contentforge.formconstructor.form.element;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,10 +9,10 @@ import java.util.List;
 
 public class Dropdown extends CustomFormElement {
 
-    @SerializedName("default") protected int defaultIndex;
+    @Getter @SerializedName("default") protected int defaultIndex;
     @SerializedName("options") protected List<String> options = new ArrayList<>();
-    protected transient List<SelectableElement> elements = new ArrayList<>();
-    protected transient int selectedIndex = -1;
+    @Getter protected transient List<SelectableElement> elements = new ArrayList<>();
+    @Getter protected transient int selectedIndex = -1;
 
     public Dropdown(List<SelectableElement> elements){
         this("", elements);

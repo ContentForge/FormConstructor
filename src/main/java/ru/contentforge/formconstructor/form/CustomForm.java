@@ -3,6 +3,7 @@ package ru.contentforge.formconstructor.form;
 import cn.nukkit.form.response.FormResponse;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 import ru.contentforge.formconstructor.form.element.CustomFormElement;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 import ru.contentforge.formconstructor.form.response.CustomFormResponse;
@@ -13,9 +14,9 @@ import java.util.HashSet;
 public class CustomForm extends CloseableForm {
 
     @SerializedName("type") protected final String type = "custom_form";
-    @SerializedName("title") protected String title;
+    @Getter @SerializedName("title") protected String title;
     @SerializedName("content") protected ArrayList<CustomFormElement> elements = new ArrayList<>();
-    protected transient CustomFormResponse response = null;
+    @Getter protected transient CustomFormResponse response = null;
     protected transient CustomFormHandler handler;
     protected final transient HashSet<String> containsId = new HashSet<>();
 
@@ -66,11 +67,6 @@ public class CustomForm extends CloseableForm {
         for (int i = 0; i < elements.size(); i++) elements.get(i).respond(result[i]);
 
         response = new CustomFormResponse(handler, elements, containsId);
-    }
-
-    @Override
-    public FormResponse getResponse() {
-        return response;
     }
 
 }
