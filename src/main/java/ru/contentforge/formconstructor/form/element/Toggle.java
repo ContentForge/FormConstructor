@@ -5,8 +5,8 @@ import lombok.Getter;
 
 public class Toggle extends CustomFormElement {
 
-    @Getter @SerializedName("default") protected final boolean defaultValue;
-    @Getter protected transient boolean value;
+    @SerializedName("default") protected final boolean defaultValue;
+    protected transient boolean value;
 
     public Toggle(){
         this("");
@@ -20,6 +20,14 @@ public class Toggle extends CustomFormElement {
         super(name, "toggle");
 
         this.defaultValue = defaultValue;
+    }
+
+    public boolean getDefaultValue() {
+        return defaultValue;
+    }
+
+    public boolean getValue() {
+        return value;
     }
 
     @Override
