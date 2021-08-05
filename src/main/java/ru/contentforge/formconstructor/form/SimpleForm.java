@@ -98,7 +98,10 @@ public class SimpleForm extends CloseableForm {
         } catch (Exception var4) {
             return;
         }
-        if(buttonId >= buttons.size() || buttonId < 0) return;
+        if(buttonId >= buttons.size() || buttonId < 0){
+            response = new SimpleFormResponse(new Button("Invalid", (p, b) -> send(p)));
+            return;
+        }
 
         response = new SimpleFormResponse(buttons.get(buttonId));
     }
