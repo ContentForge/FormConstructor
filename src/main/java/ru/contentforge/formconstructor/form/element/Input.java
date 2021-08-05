@@ -22,8 +22,10 @@ public class Input extends CustomFormElement {
     }
 
     @Override
-    public void respond(Object value) {
+    public boolean respond(Object value) {
         this.value = (String) value;
+
+        return true;
     }
 
     public Input(String name, String placeholder, String defaultValue) {

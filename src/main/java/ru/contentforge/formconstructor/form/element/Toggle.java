@@ -31,8 +31,10 @@ public class Toggle extends CustomFormElement {
     }
 
     @Override
-    public void respond(Object value) {
+    public boolean respond(Object value) {
         this.value = (boolean) value;
+
+        return true;
     }
 
 }

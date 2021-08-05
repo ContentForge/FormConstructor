@@ -11,8 +11,8 @@ public class Label extends CustomFormElement {
     }
 
     @Override
-    public void respond(Object value) {
-
+    public boolean respond(Object value) {
+        return true;
     }
 
 }

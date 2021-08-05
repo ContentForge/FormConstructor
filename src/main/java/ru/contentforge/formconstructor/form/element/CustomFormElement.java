@@ -14,6 +14,6 @@ abstract public class CustomFormElement extends FormElement {
         this.type = type;
     }
 
-    public abstract void respond(Object value);
+    public abstract boolean respond(Object value);
 
 }

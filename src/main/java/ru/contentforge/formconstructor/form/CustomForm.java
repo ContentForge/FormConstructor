@@ -64,7 +64,12 @@ public class CustomForm extends CloseableForm {
         if(data.equals("null")) return;
 
         Object[] result = new Gson().fromJson(data, Object[].class);
-        for (int i = 0; i < elements.size(); i++) elements.get(i).respond(result[i]);
+        for (int i = 0; i < elements.size(); i++){
+            if(!elements.get(i).respond(result[i])){
+                response = new CustomFormResponse((p, r) -> send(p), elements, containsId);
+                return;
+            }
+        }
 
         response = new CustomFormResponse(handler, elements, containsId);
     }

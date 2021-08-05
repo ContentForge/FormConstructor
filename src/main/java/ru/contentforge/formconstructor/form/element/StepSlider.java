@@ -50,16 +50,23 @@ public class StepSlider extends CustomFormElement {
     }
 
     public SelectableElement getDefault(){
-        return elements.get(defaultIndex);
+        if(elements.size() == 0) return null;
+        return (elements.size() == 1 && defaultIndex == 1)? null : elements.get(defaultIndex);
     }
 
     public SelectableElement getValue(){
-        return selectedIndex == -1? null : elements.get(selectedIndex);
+        if(elements.size() == 0) return null;
+        return (elements.size() == 1 && selectedIndex == 1)? null : elements.get(selectedIndex);
     }
 
     @Override
-    public void respond(Object value) {
+    public boolean respond(Object value) {
         selectedIndex = ((Double) value).intValue();
+
+        if(elements.size() == 0) return true;
+        if(selectedIndex < 0) return false;
+        if(elements.size() == 1 && selectedIndex == 1) return true;
+        return !(selectedIndex >= elements.size());
     }
 
 }
