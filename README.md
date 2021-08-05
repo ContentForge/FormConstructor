@@ -1,3 +1,5 @@
+![logo by @tolimag](.github/logo.png)
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.1-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/1.0.1)
 
