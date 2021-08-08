@@ -16,7 +16,7 @@ public class SimpleForm extends CloseableForm {
     @SerializedName("type") protected final String type = "form";
     @Getter @SerializedName("title") protected String title;
     @Getter @SerializedName("content") protected String content;
-    @SerializedName("buttons") protected ArrayList<Button> buttons = new ArrayList<>();
+    @Getter @SerializedName("buttons") protected ArrayList<Button> buttons = new ArrayList<>();
     @Getter protected transient SimpleFormResponse response = null;
 
     public SimpleForm(){
