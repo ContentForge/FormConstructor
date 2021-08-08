@@ -1,6 +1,5 @@
 package ru.contentforge.formconstructor.form;
 
-import cn.nukkit.form.response.FormResponse;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
@@ -15,7 +14,7 @@ public class CustomForm extends CloseableForm {
 
     @SerializedName("type") protected final String type = "custom_form";
     @Getter @SerializedName("title") protected String title;
-    @SerializedName("content") protected ArrayList<CustomFormElement> elements = new ArrayList<>();
+    @Getter @SerializedName("content") protected ArrayList<CustomFormElement> elements = new ArrayList<>();
     @Getter protected transient CustomFormResponse response = null;
     protected transient CustomFormHandler handler;
     protected final transient HashSet<String> containsId = new HashSet<>();
