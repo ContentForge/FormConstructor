@@ -43,7 +43,6 @@ public class CustomForm extends CloseableForm {
     }
 
     public CustomForm addElement(CustomFormElement element){
-        element.index = elements.size();
         elements.add(element);
         return this;
     }
@@ -70,6 +69,8 @@ public class CustomForm extends CloseableForm {
                 return;
             }
         }
+
+        for(int i = 0; i < elements.size(); i++) elements.get(i).index = i;
 
         response = new CustomFormResponse(handler, elements, containsId);
     }
