@@ -2,9 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.2-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/1.0.2)
+[![CloudBurst](https://img.shields.io/badge/CloudBurst-1.0.2-brightgreen)](https://cloudburstmc.org/resources/formconstructor.738/)
 
 Introduction
--------------
+------------- 
 
 Library is designed to simplify the creation and handling of forms.
 It has a few key advantages over other  form libraries:
@@ -69,6 +70,7 @@ List<SelectableElement> elements = Arrays.asList(
 );
 
 form.addElement(new Label("This is a test"))
+    .addElement("Easy way to add a label")
     .addElement("my-text",
             new Input("Input", "This is a placeholder", "Default value")
     ).addElement("my-toggle", new Toggle("Toggle?", true))

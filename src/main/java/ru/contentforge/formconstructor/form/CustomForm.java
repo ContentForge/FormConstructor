@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import ru.contentforge.formconstructor.form.element.CustomFormElement;
+import ru.contentforge.formconstructor.form.element.Label;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 
@@ -39,6 +40,10 @@ public class CustomForm extends CloseableForm {
     public CustomForm setTitle(String title){
         this.title = title;
         return this;
+    }
+
+    public CustomForm addElement(String text){
+        return addElement(new Label(text));
     }
 
     public CustomForm addElement(CustomFormElement element){
