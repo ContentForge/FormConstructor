@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import ru.contentforge.formconstructor.form.element.CustomFormElement;
+import ru.contentforge.formconstructor.form.element.Label;
 import ru.contentforge.formconstructor.form.element.validator.ValidationField;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 import ru.contentforge.formconstructor.form.response.CustomFormResponse;
@@ -15,7 +16,7 @@ public class CustomForm extends CloseableForm {
 
     @SerializedName("type") protected final String type = "custom_form";
     @Getter @SerializedName("title") protected String title;
-    @SerializedName("content") protected ArrayList<CustomFormElement> elements = new ArrayList<>();
+    @Getter @SerializedName("content") protected ArrayList<CustomFormElement> elements = new ArrayList<>();
     @Getter protected transient CustomFormResponse response = null;
     protected transient CustomFormHandler handler;
     protected final transient HashSet<String> containsId = new HashSet<>();
@@ -43,8 +44,11 @@ public class CustomForm extends CloseableForm {
         return this;
     }
 
+    public CustomForm addElement(String text){
+        return addElement(new Label(text));
+    }
+
     public CustomForm addElement(CustomFormElement element){
-        element.index = elements.size();
         elements.add(element);
         return this;
     }
@@ -76,6 +80,8 @@ public class CustomForm extends CloseableForm {
                 if(validated && !((ValidationField) element).getValidatorResult()) validated = false;
             }
         }
+
+        for(int i = 0; i < elements.size(); i++) elements.get(i).index = i;
 
         response = new CustomFormResponse(handler, elements, containsId);
     }

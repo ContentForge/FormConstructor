@@ -1,10 +1,11 @@
 ![logo by @tolimag](.github/logo.png)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.2-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/1.0.2)
+[![Version](https://img.shields.io/badge/version-1.0.3-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/1.0.3)
+[![CloudBurst](https://img.shields.io/badge/CloudBurst-1.0.3-brightgreen)](https://cloudburstmc.org/resources/formconstructor.738/)
 
 Introduction
--------------
+------------- 
 
 Library is designed to simplify the creation and handling of forms.
 It has a few key advantages over other  form libraries:
@@ -29,7 +30,7 @@ SimpleFormHandler handler = (p, button) -> {
 form.setContent("This is a text")
     .addContent("\nThis is addition :3")
     .addButton("Test button", handler)
-    .addButton("Same button but with image", ImageType.PATH, "textures/items.diamond", handler)
+    .addButton("Same button but with image", ImageType.PATH, "textures/items/diamond", handler)
     .addButton("Button without handler");
 
 //We can set handler for null result
@@ -69,6 +70,7 @@ List<SelectableElement> elements = Arrays.asList(
 );
 
 form.addElement(new Label("This is a test"))
+    .addElement("Easy way to add a label")
     .addElement("my-text", Input.builder().setName("A sample input").build())
     .addElement("my-toggle", new Toggle("Toggle?", true))
     .addElement("my-dd", new Dropdown("Dropdown",  elements))
