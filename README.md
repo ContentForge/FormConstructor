@@ -69,9 +69,8 @@ List<SelectableElement> elements = Arrays.asList(
 );
 
 form.addElement(new Label("This is a test"))
-    .addElement("my-text",
-            new Input("Input", "This is a placeholder", "Default value")
-    ).addElement("my-toggle", new Toggle("Toggle?", true))
+    .addElement("my-text", Input.builder().setName("A sample input").build())
+    .addElement("my-toggle", new Toggle("Toggle?", true))
     .addElement("my-dd", new Dropdown("Dropdown",  elements))
     .addElement(new Dropdown("Dropdown with default value", elements, 1))
     .addElement("my-ss", new StepSlider("Step slider", elements, 2));
