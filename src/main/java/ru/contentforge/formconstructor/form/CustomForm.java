@@ -1,10 +1,10 @@
 package ru.contentforge.formconstructor.form;
 
-import cn.nukkit.form.response.FormResponse;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import ru.contentforge.formconstructor.form.element.CustomFormElement;
+import ru.contentforge.formconstructor.form.element.validator.ValidationField;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 
@@ -19,6 +19,7 @@ public class CustomForm extends CloseableForm {
     @Getter protected transient CustomFormResponse response = null;
     protected transient CustomFormHandler handler;
     protected final transient HashSet<String> containsId = new HashSet<>();
+    @Getter protected transient boolean validated = true;
 
     public CustomForm(){
         this("", null);
@@ -65,9 +66,14 @@ public class CustomForm extends CloseableForm {
 
         Object[] result = new Gson().fromJson(data, Object[].class);
         for (int i = 0; i < elements.size(); i++){
-            if(!elements.get(i).respond(result[i])){
+            CustomFormElement element = elements.get(i);
+            if(!element.respond(result[i])){
                 response = new CustomFormResponse((p, r) -> send(p), elements, containsId);
                 return;
+            }
+
+            if(element instanceof ValidationField){
+                if(validated && !((ValidationField) element).getValidatorResult()) validated = false;
             }
         }
 
