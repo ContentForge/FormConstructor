@@ -1,6 +1,8 @@
 package ru.contentforge.formconstructor.form.response;
 
 import cn.nukkit.Player;
+import lombok.Getter;
+import ru.contentforge.formconstructor.form.CustomForm;
 import ru.contentforge.formconstructor.form.element.*;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 
@@ -10,14 +12,16 @@ import java.util.List;
 
 public class CustomFormResponse extends Response<CustomFormHandler> {
 
+    @Getter protected final CustomForm form;
     protected final ArrayList<CustomFormElement> elements;
     protected final HashSet<String> containsId;
 
-    public CustomFormResponse(CustomFormHandler handler, ArrayList<CustomFormElement> elements, HashSet<String> containsId) {
+    public CustomFormResponse(CustomFormHandler handler, ArrayList<CustomFormElement> elements, HashSet<String> containsId, CustomForm form) {
         super(handler, "");
 
         this.elements = elements;
         this.containsId = containsId;
+        this.form = form;
     }
 
     public CustomFormElement get(int index){

@@ -72,7 +72,7 @@ public class CustomForm extends CloseableForm {
         for (int i = 0; i < elements.size(); i++){
             CustomFormElement element = elements.get(i);
             if(!element.respond(result[i])){
-                response = new CustomFormResponse((p, r) -> send(p), elements, containsId);
+                response = new CustomFormResponse((p, r) -> send(p), elements, containsId, this);
                 return;
             }
 
@@ -83,7 +83,7 @@ public class CustomForm extends CloseableForm {
 
         for(int i = 0; i < elements.size(); i++) elements.get(i).index = i;
 
-        response = new CustomFormResponse(handler, elements, containsId);
+        response = new CustomFormResponse(handler, elements, containsId, this);
     }
 
 }
