@@ -1,5 +1,6 @@
 package ru.contentforge.formconstructor.form;
 
+import cn.nukkit.Player;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
@@ -84,6 +85,11 @@ public class CustomForm extends CloseableForm {
         for(int i = 0; i < elements.size(); i++) elements.get(i).index = i;
 
         response = new CustomFormResponse(handler, elements, containsId, this);
+    }
+
+    public void send(Player player, CustomFormHandler handler){
+        setHandler(handler);
+        send(player);
     }
 
 }
