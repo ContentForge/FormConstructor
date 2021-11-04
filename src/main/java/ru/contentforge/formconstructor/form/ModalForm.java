@@ -1,5 +1,6 @@
 package ru.contentforge.formconstructor.form;
 
+import cn.nukkit.Player;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import ru.contentforge.formconstructor.form.handler.ModalFormHandler;
@@ -78,6 +79,11 @@ public class ModalForm extends Form {
         if (data.equals("null") || handler == null) return;
 
         response = new ModalFormResponse(handler, data);
+    }
+
+    public void send(Player player, ModalFormHandler handler){
+        setHandler(handler);
+        send(player);
     }
 
 }
