@@ -1,8 +1,8 @@
 ![logo by @tolimag](.github/logo.png)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.1.2-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/1.1.2)
-[![CloudBurst](https://img.shields.io/badge/CloudBurst-1.0.3-brightgreen)](https://cloudburstmc.org/resources/formconstructor.738/)
+[![Version](https://img.shields.io/badge/version-1.1.3-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/1.1.3)
+[![CloudBurst](https://img.shields.io/badge/CloudBurst-1.1.2-brightgreen)](https://cloudburstmc.org/resources/formconstructor.738/)
 
 Introduction
 ------------- 
@@ -14,6 +14,7 @@ It has a few key advantages over other  form libraries:
 - For each button we can set a lambda function in SimpleForm.
 - In SimpleForm we get a button object as a response, where we can get its text and index.
 - In CustomForm we can mark elements with an identifier to conveniently get this element in its handler. We can get element by id and its index.
+- Easy async handling.
 
 Examples
 -------------
@@ -92,6 +93,9 @@ form.setHandler((p, response) -> {
 });
 ```
 
+### Async handling
+Also you can use method `sendAsync(Player)` for using async form handling.
+But this may cause some restrictions. What exactly - I don't know.
 
 Donate
 -------------
