@@ -10,13 +10,13 @@ import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 import ru.contentforge.formconstructor.form.response.ModalFormResponse;
 import ru.contentforge.formconstructor.form.response.SimpleFormResponse;
 
-public class FormHandlingAsyncTask extends AsyncTask {
+public class FormHandlingTask extends AsyncTask {
 
     private final FormResponse response;
     private final Form form;
     private final Player player;
 
-    public FormHandlingAsyncTask(FormResponse response, Form form, Player player){
+    public FormHandlingTask(FormResponse response, Form form, Player player){
         this.response = response;
         this.form = form;
         this.player = player;

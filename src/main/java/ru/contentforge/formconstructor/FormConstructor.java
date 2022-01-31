@@ -6,7 +6,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerFormRespondedEvent;
 import cn.nukkit.plugin.PluginBase;
 import ru.contentforge.formconstructor.form.Form;
-import ru.contentforge.formconstructor.task.FormHandlingAsyncTask;
+import ru.contentforge.formconstructor.task.FormHandlingTask;
 
 public class FormConstructor extends PluginBase implements Listener {
 
@@ -19,11 +19,15 @@ public class FormConstructor extends PluginBase implements Listener {
     void onFormResponded(PlayerFormRespondedEvent event){
         if(!(event.getWindow() instanceof Form)) return;
 
-        getServer().getScheduler().scheduleAsyncTask(this, new FormHandlingAsyncTask(
+        Form form = (Form) event.getWindow();
+        FormHandlingTask handler = new FormHandlingTask(
                 event.getResponse(),
                 (Form) event.getWindow(),
                 event.getPlayer()
-        ));
+        );
+
+        if(form.isAsync()) getServer().getScheduler().scheduleAsyncTask(this, handler);
+        else handler.onRun();
     }
 
 }
