@@ -48,7 +48,7 @@ For ModalForm:
 ```java
 ModalForm form = new ModalForm("Test modal form");
 
-form.setContent("Is OneKN gay?") //local meme in RuNukkitDev
+form.setHandler("Is OneKN gay?") //local meme in RuNukkitDev
     .setPositiveButton("Yes")
     .setNegativeButton("Sure");
 
@@ -91,6 +91,8 @@ form.setHandler((p, response) -> {
     el = response.getStepSlider("my-ss").getValue();
     p.sendMessage(el.getText());
 });
+
+form.send(player);
 ```
 
 ### Async handling
