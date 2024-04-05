@@ -14,10 +14,6 @@ public class Dropdown extends CustomFormElement {
     @Getter protected transient List<SelectableElement> elements = new ArrayList<>();
     @Getter protected transient int selectedIndex = -1;
 
-    public Dropdown(List<SelectableElement> elements){
-        this("", elements);
-    }
-
     public Dropdown(String name, List<SelectableElement> elements){
         this(name, elements, 0);
     }

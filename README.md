@@ -65,13 +65,13 @@ List<SelectableElement> elements = Arrays.asList(
     new SelectableElement("Option 3")
 );
 
-form.addElement(new Label("This is a test"))
-    .addElement("Easy way to add a label")
-    .addElement("my-text", new Input("A sample input"))
-    .addElement("my-toggle", new Toggle("Toggle?", true))
-    .addElement("my-dd", new Dropdown("Dropdown",  elements))
-    .addElement(new Dropdown("Dropdown with default value", elements, 1))
-    .addElement("my-ss", new StepSlider("Step slider", elements, 2));
+form.add(new Label("This is a test"))
+    .add("Easy way to add a label")
+    .add("my-text", new Input("A sample input"))
+    .add("my-toggle", new Toggle("Toggle?", true))
+    .add("my-dd", new Dropdown("Dropdown",  elements))
+    .add(new Dropdown("Dropdown with default value", elements, 1))
+    .add("my-ss", new StepSlider("Step slider", elements, 2));
 
 form.setHandler((p, response) -> {
     //We can get by id and index
@@ -86,6 +86,8 @@ form.setHandler((p, response) -> {
     el = response.getStepSlider("my-ss").getValue();
     p.sendMessage(el.getText());
 });
+
+form.send(player);
 ```
 
 ### Async handling

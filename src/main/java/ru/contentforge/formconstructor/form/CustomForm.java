@@ -43,19 +43,19 @@ public class CustomForm extends CloseableForm {
         return this;
     }
 
-    public CustomForm addElement(String text){
-        return addElement(new Label(text));
+    public CustomForm add(String text){
+        return add(new Label(text));
     }
 
-    public CustomForm addElement(CustomFormElement element){
+    public CustomForm add(CustomFormElement element){
         elements.add(element);
         return this;
     }
 
-    public CustomForm addElement(String elementId, CustomFormElement element){
+    public CustomForm add(String elementId, CustomFormElement element){
         element.elementId = elementId;
         containsId.add(elementId);
-        return addElement(element);
+        return add(element);
     }
 
     public CustomForm setHandler(CustomFormHandler handler){

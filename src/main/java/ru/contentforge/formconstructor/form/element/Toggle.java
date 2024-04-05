@@ -7,10 +7,6 @@ public class Toggle extends CustomFormElement {
     @SerializedName("default") protected final boolean defaultValue;
     protected transient boolean value;
 
-    public Toggle(){
-        this("");
-    }
-
     public Toggle(String name){
         this(name, false);
     }

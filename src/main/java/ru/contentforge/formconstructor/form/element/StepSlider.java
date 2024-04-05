@@ -14,10 +14,6 @@ public class StepSlider extends CustomFormElement {
     @Getter protected transient List<SelectableElement> elements = new ArrayList<>();
     @Getter protected transient int selectedIndex = -1;
 
-    public StepSlider(List<SelectableElement> elements){
-        this("", elements);
-    }
-
     public StepSlider(String name, List<SelectableElement> elements){
         this(name, elements, 0);
     }
