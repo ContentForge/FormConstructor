@@ -14,10 +14,6 @@ public class Dropdown extends CustomFormElement {
     @Getter protected transient List<SelectableElement> elements = new ArrayList<>();
     @Getter protected transient int selectedIndex = -1;
 
-    public Dropdown(List<SelectableElement> elements){
-        this("", elements);
-    }
-
     public Dropdown(String name, List<SelectableElement> elements){
         this(name, elements, 0);
     }
@@ -50,11 +46,11 @@ public class Dropdown extends CustomFormElement {
     }
 
     public SelectableElement getDefault(){
-        return elements.size() == 0? null : elements.get(defaultIndex);
+        return elements.isEmpty() ? null : elements.get(defaultIndex);
     }
 
     public SelectableElement getValue(){
-        return elements.size() == 0? null : elements.get(selectedIndex);
+        return elements.isEmpty() ? null : elements.get(selectedIndex);
     }
 
     @Override

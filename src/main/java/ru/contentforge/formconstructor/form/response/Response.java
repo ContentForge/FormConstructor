@@ -15,5 +15,4 @@ abstract public class Response <T extends FormHandler> extends FormResponse {
     }
 
     public abstract void handle(Player player);
-
 }

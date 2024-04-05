@@ -85,5 +85,4 @@ public class ModalForm extends Form {
         setHandler(handler);
         send(player);
     }
-
 }

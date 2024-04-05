@@ -1,8 +1,7 @@
 ![logo by @tolimag](.github/logo.png)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.1.3-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/1.1.3)
-[![CloudBurst](https://img.shields.io/badge/CloudBurst-1.1.2-brightgreen)](https://cloudburstmc.org/resources/formconstructor.738/)
+[![Version](https://img.shields.io/badge/version-2.0.0-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/2.0.0)
 
 Introduction
 ------------- 
@@ -19,7 +18,7 @@ It has a few key advantages over other  form libraries:
 Examples
 -------------
 
-For SimpleForm:
+### SimpleForm
 ```java
 SimpleForm form = new SimpleForm("Sample title");
 
@@ -30,21 +29,18 @@ SimpleFormHandler handler = (p, button) -> {
 
 form.setContent("This is a text")
     .addContent("\nThis is addition :3")
-    .addButton("Test button", handler)
-    .addButton("Same button but with image", ImageType.PATH, "textures/items/diamond", handler)
-    .addButton("Button without handler");
+    .add(new Button("Test button", handler))
+    .add(new Button("Same button but with image", Button.Icon.texture("textures/items/diamond"), handler));
 
 //We can set handler for null result
-form.setNoneHandler(p -> {
+form.setOnCloseHandler(p -> {
     p.sendMessage("Why you closed this form? :c");
 });
 
 form.send(player);
-//Also we can use `player.showFormWindow(form);` but it isn't comfortable
 ```
 
-For ModalForm:
-
+### ModalForm
 ```java
 ModalForm form = new ModalForm("Test modal form");
 
@@ -59,8 +55,7 @@ form.setResponse((p, result) -> {
 form.send(player);
 ```
 
-For CustomForm:
-
+### CustomForm
 ```java
 CustomForm form = new CustomForm("Sample custom form");
 
@@ -70,18 +65,18 @@ List<SelectableElement> elements = Arrays.asList(
     new SelectableElement("Option 3")
 );
 
-form.addElement(new Label("This is a test"))
-    .addElement("Easy way to add a label")
-    .addElement("my-text", Input.builder().setName("A sample input").build())
-    .addElement("my-toggle", new Toggle("Toggle?", true))
-    .addElement("my-dd", new Dropdown("Dropdown",  elements))
-    .addElement(new Dropdown("Dropdown with default value", elements, 1))
-    .addElement("my-ss", new StepSlider("Step slider", elements, 2));
+form.add(new Label("This is a test"))
+    .add("Easy way to add a label")
+    .add("my-text", new Input("A sample input"))
+    .add("my-toggle", new Toggle("Toggle?", true))
+    .add("my-dd", new Dropdown("Dropdown",  elements))
+    .add(new Dropdown("Dropdown with default value", elements, 1))
+    .add("my-ss", new StepSlider("Step slider", elements, 2));
 
 form.setHandler((p, response) -> {
     //We can get by id and index
     p.sendMessage(response.getInput("my-text").getValue());
-    p.sendMessage(response.getInput(1).getValue()); //It's bad method
+    p.sendMessage(response.getInput(1).getValue()); //It's bad practice. Do not use indexes
     p.sendMessage(response.getToggle("my-toggle").getValue());
     
     SelectableElement el = response.getDropdown("my-dd").getValue();
@@ -91,13 +86,9 @@ form.setHandler((p, response) -> {
     el = response.getStepSlider("my-ss").getValue();
     p.sendMessage(el.getText());
 });
+
+form.send(player);
 ```
 
 ### Async handling
-Also you can use method `sendAsync(Player)` for using async form handling.
-But this may cause some restrictions. What exactly - I don't know.
-
-Donate
--------------
-
-- [DonationAlerts](https://www.donationalerts.com/r/qpexlegendary)
+Also you can use method `form.sendAsync(player)` for using async form handling.

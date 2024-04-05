@@ -17,10 +17,9 @@ public class FormConstructor extends PluginBase implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     void onFormResponded(PlayerFormRespondedEvent event){
-        if(!(event.getWindow() instanceof Form)) return;
+        if(!(event.getWindow() instanceof Form form)) return;
 
-        Form form = (Form) event.getWindow();
-        FormHandlingTask handler = new FormHandlingTask(
+        var handler = new FormHandlingTask(
                 event.getResponse(),
                 (Form) event.getWindow(),
                 event.getPlayer()
@@ -29,5 +28,4 @@ public class FormConstructor extends PluginBase implements Listener {
         if(form.isAsync()) getServer().getScheduler().scheduleAsyncTask(this, handler);
         else handler.onRun();
     }
-
 }

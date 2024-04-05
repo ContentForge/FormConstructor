@@ -2,10 +2,6 @@ package ru.contentforge.formconstructor.form.element;
 
 public class Label extends CustomFormElement {
 
-    public Label(){
-        this("");
-    }
-
     public Label(String text) {
         super(text, "label");
     }
@@ -14,5 +10,4 @@ public class Label extends CustomFormElement {
     public boolean respond(Object value) {
         return true;
     }
-
 }

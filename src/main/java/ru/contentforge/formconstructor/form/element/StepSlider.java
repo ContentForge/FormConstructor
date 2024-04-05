@@ -14,10 +14,6 @@ public class StepSlider extends CustomFormElement {
     @Getter protected transient List<SelectableElement> elements = new ArrayList<>();
     @Getter protected transient int selectedIndex = -1;
 
-    public StepSlider(List<SelectableElement> elements){
-        this("", elements);
-    }
-
     public StepSlider(String name, List<SelectableElement> elements){
         this(name, elements, 0);
     }
@@ -50,12 +46,12 @@ public class StepSlider extends CustomFormElement {
     }
 
     public SelectableElement getDefault(){
-        if(elements.size() == 0) return null;
+        if(elements.isEmpty()) return null;
         return (elements.size() == 1 && defaultIndex == 1)? null : elements.get(defaultIndex);
     }
 
     public SelectableElement getValue(){
-        if(elements.size() == 0) return null;
+        if(elements.isEmpty()) return null;
         return (elements.size() == 1 && selectedIndex == 1)? null : elements.get(selectedIndex);
     }
 
@@ -63,10 +59,9 @@ public class StepSlider extends CustomFormElement {
     public boolean respond(Object value) {
         selectedIndex = ((Double) value).intValue();
 
-        if(elements.size() == 0) return true;
+        if(elements.isEmpty()) return true;
         if(selectedIndex < 0) return false;
         if(elements.size() == 1 && selectedIndex == 1) return true;
         return !(selectedIndex >= elements.size());
     }
-
 }

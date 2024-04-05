@@ -1,4 +1,3 @@
 package ru.contentforge.formconstructor.form.handler;
 
-public interface FormHandler {
-}
+public interface FormHandler {}

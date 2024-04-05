@@ -4,9 +4,10 @@ import cn.nukkit.Player;
 import cn.nukkit.form.window.FormWindow;
 import lombok.Getter;
 
+@Getter
 abstract public class Form extends FormWindow {
 
-    @Getter protected transient boolean async = false;
+    protected transient boolean async = false;
 
     public void send(Player player){
         async = false;
@@ -17,5 +18,4 @@ abstract public class Form extends FormWindow {
         async = true;
         player.showFormWindow(this);
     }
-
 }

@@ -14,5 +14,4 @@ public class ModalFormResponse extends Response<ModalFormHandler> {
         if(handler == null) return;
         handler.handle(player, data.equals("true"));
     }
-
 }
