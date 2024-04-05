@@ -20,5 +20,4 @@ public class SelectableElement {
     public <T> T getValue(Class<T> clazz) {
         return clazz.cast(value);
     }
-
 }

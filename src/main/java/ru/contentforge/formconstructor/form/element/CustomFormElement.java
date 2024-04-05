@@ -15,5 +15,4 @@ abstract public class CustomFormElement extends FormElement {
     }
 
     public abstract boolean respond(Object value);
-
 }

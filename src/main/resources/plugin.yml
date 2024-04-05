@@ -1,0 +1,6 @@
+name: FormConstructor
+author: ScarletRedMan
+version: 2.0.0
+description: "Library for easy creating and handling of forms"
+api: 2.0.0
+main: ru.contentforge.formconstructor.FormConstructor

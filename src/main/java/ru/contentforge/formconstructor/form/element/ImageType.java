@@ -6,5 +6,4 @@ public enum ImageType {
 
     @SerializedName("path") PATH,
     @SerializedName("url") URL,
-
 }

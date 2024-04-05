@@ -4,8 +4,6 @@ import cn.nukkit.Player;
 import lombok.Getter;
 import ru.contentforge.formconstructor.form.CustomForm;
 import ru.contentforge.formconstructor.form.element.*;
-import ru.contentforge.formconstructor.form.element.validator.ValidationField;
-import ru.contentforge.formconstructor.form.element.validator.Validator;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 
 import java.util.ArrayList;
@@ -118,23 +116,4 @@ public class CustomFormResponse extends Response<CustomFormHandler> {
         if(handler == null) return;
         handler.handle(player, this);
     }
-
-    public boolean isValidated(){
-        return form.isValidated();
-    }
-
-    public ArrayList<String> getValidatorErrors(){
-        ArrayList<String> errors = new ArrayList<>();
-        for(CustomFormElement el: elements){
-            if(!(el instanceof ValidationField)) continue;
-            ValidationField validationField = (ValidationField) el;
-            for(Validator validator: validationField.getValidators()){
-                if(validator.isValidated()) continue;
-
-                errors.add(validator.getName());
-            }
-        }
-        return errors;
-    }
-
 }

@@ -50,11 +50,11 @@ public class Dropdown extends CustomFormElement {
     }
 
     public SelectableElement getDefault(){
-        return elements.size() == 0? null : elements.get(defaultIndex);
+        return elements.isEmpty() ? null : elements.get(defaultIndex);
     }
 
     public SelectableElement getValue(){
-        return elements.size() == 0? null : elements.get(selectedIndex);
+        return elements.isEmpty() ? null : elements.get(selectedIndex);
     }
 
     @Override

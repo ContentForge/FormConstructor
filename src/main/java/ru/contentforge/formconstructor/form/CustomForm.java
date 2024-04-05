@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import ru.contentforge.formconstructor.form.element.CustomFormElement;
 import ru.contentforge.formconstructor.form.element.Label;
-import ru.contentforge.formconstructor.form.element.validator.ValidationField;
 import ru.contentforge.formconstructor.form.handler.CustomFormHandler;
 import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 
@@ -21,7 +20,6 @@ public class CustomForm extends CloseableForm {
     @Getter protected transient CustomFormResponse response = null;
     protected transient CustomFormHandler handler;
     protected final transient HashSet<String> containsId = new HashSet<>();
-    @Getter protected transient boolean validated = true;
 
     public CustomForm(){
         this("", null);
@@ -76,10 +74,6 @@ public class CustomForm extends CloseableForm {
                 response = new CustomFormResponse((p, r) -> send(p), elements, containsId, this);
                 return;
             }
-
-            if(element instanceof ValidationField){
-                if(validated && !((ValidationField) element).getValidatorResult()) validated = false;
-            }
         }
 
         for(int i = 0; i < elements.size(); i++) elements.get(i).index = i;
@@ -91,5 +85,4 @@ public class CustomForm extends CloseableForm {
         setHandler(handler);
         send(player);
     }
-
 }

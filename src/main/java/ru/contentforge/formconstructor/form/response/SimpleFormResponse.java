@@ -19,5 +19,4 @@ public class SimpleFormResponse extends Response<SimpleFormHandler> {
         if(handler == null) return;
         handler.handle(player, button);
     }
-
 }

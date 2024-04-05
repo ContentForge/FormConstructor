@@ -1,7 +1,6 @@
 package ru.contentforge.formconstructor.form.element;
 
 import com.google.gson.annotations.SerializedName;
-import lombok.Getter;
 
 public class Toggle extends CustomFormElement {
 
@@ -36,5 +35,4 @@ public class Toggle extends CustomFormElement {
 
         return true;
     }
-
 }

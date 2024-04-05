@@ -6,5 +6,4 @@ import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 public interface CustomFormHandler extends FormHandler {
 
     void handle(Player player, CustomFormResponse response);
-
 }

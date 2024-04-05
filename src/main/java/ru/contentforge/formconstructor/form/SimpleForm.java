@@ -105,5 +105,4 @@ public class SimpleForm extends CloseableForm {
 
         response = new SimpleFormResponse(buttons.get(buttonId));
     }
-
 }
