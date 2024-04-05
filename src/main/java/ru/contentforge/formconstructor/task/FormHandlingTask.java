@@ -24,27 +24,29 @@ public class FormHandlingTask extends AsyncTask {
 
     @Override
     public void onRun() {
-        if(response instanceof ModalFormResponse){
-            ((ModalFormResponse) response).handle(player);
-            return;
-        }
+        synchronized (form) {
+            if (response instanceof ModalFormResponse) {
+                ((ModalFormResponse) response).handle(player);
+                return;
+            }
 
-        if(response == null && form instanceof CloseableForm){
-            OnCloseFormHandler noneHandler = ((CloseableForm) form).getOnCloseHandler();
-            if(noneHandler != null) noneHandler.handle(player);
-            return;
-        }
+            if (response == null && form instanceof CloseableForm) {
+                OnCloseFormHandler noneHandler = ((CloseableForm) form).getOnCloseHandler();
+                if (noneHandler != null) noneHandler.handle(player);
+                return;
+            }
 
-        if(response instanceof SimpleFormResponse){
-            ((SimpleFormResponse) form.getResponse()).handle(player);
-            return;
-        }
+            if (response instanceof SimpleFormResponse) {
+                ((SimpleFormResponse) form.getResponse()).handle(player);
+                return;
+            }
 
-        if(response instanceof CustomFormResponse){
-            ((CustomFormResponse) form.getResponse()).handle(player);
-            return;
-        }
+            if (response instanceof CustomFormResponse) {
+                ((CustomFormResponse) form.getResponse()).handle(player);
+                return;
+            }
 
-        //...
+            //...
+        }
     }
 }
