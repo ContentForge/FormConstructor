@@ -2,9 +2,9 @@ package ru.contentforge.formconstructor.form.response;
 
 import cn.nukkit.Player;
 import ru.contentforge.formconstructor.form.element.Button;
-import ru.contentforge.formconstructor.form.handler.SimpleFormHandler;
+import ru.contentforge.formconstructor.form.handler.ButtonClickHandler;
 
-public class SimpleFormResponse extends Response<SimpleFormHandler> {
+public class SimpleFormResponse extends Response<ButtonClickHandler> {
 
     protected Button button;
 

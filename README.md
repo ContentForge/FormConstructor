@@ -29,9 +29,8 @@ SimpleFormHandler handler = (p, button) -> {
 
 form.setContent("This is a text")
     .addContent("\nThis is addition :3")
-    .addButton("Test button", handler)
-    .addButton("Same button but with image", ImageType.PATH, "textures/items/diamond", handler)
-    .addButton("Button without handler");
+    .add(new Button("Test button", handler))
+    .add(new Button("Same button but with image", Button.Icon.texture("textures/items/diamond"), handler));
 
 //We can set handler for null result
 form.setNoneHandler(p -> {
