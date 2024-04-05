@@ -5,7 +5,7 @@ import cn.nukkit.form.response.FormResponse;
 import cn.nukkit.scheduler.AsyncTask;
 import ru.contentforge.formconstructor.form.CloseableForm;
 import ru.contentforge.formconstructor.form.Form;
-import ru.contentforge.formconstructor.form.handler.NoneHandler;
+import ru.contentforge.formconstructor.form.handler.OnCloseFormHandler;
 import ru.contentforge.formconstructor.form.response.CustomFormResponse;
 import ru.contentforge.formconstructor.form.response.ModalFormResponse;
 import ru.contentforge.formconstructor.form.response.SimpleFormResponse;
@@ -30,7 +30,7 @@ public class FormHandlingTask extends AsyncTask {
         }
 
         if(response == null && form instanceof CloseableForm){
-            NoneHandler noneHandler = ((CloseableForm) form).getNoneHandler();
+            OnCloseFormHandler noneHandler = ((CloseableForm) form).getOnCloseHandler();
             if(noneHandler != null) noneHandler.handle(player);
             return;
         }

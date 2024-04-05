@@ -1,15 +1,15 @@
 package ru.contentforge.formconstructor.form;
 
 import lombok.Getter;
-import ru.contentforge.formconstructor.form.handler.NoneHandler;
+import ru.contentforge.formconstructor.form.handler.OnCloseFormHandler;
 
 @Getter
 abstract public class CloseableForm extends Form {
 
-    protected transient NoneHandler noneHandler = null;
+    protected transient OnCloseFormHandler onCloseHandler = null;
 
-    public CloseableForm setNoneHandler(NoneHandler noneHandler) {
-        this.noneHandler = noneHandler;
+    public CloseableForm setOnCloseHandler(OnCloseFormHandler onCloseHandler) {
+        this.onCloseHandler = onCloseHandler;
         return this;
     }
 }

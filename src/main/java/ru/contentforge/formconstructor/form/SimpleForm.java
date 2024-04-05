@@ -3,7 +3,7 @@ package ru.contentforge.formconstructor.form;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import ru.contentforge.formconstructor.form.element.Button;
-import ru.contentforge.formconstructor.form.handler.NoneHandler;
+import ru.contentforge.formconstructor.form.handler.OnCloseFormHandler;
 import ru.contentforge.formconstructor.form.response.SimpleFormResponse;
 
 import java.util.ArrayList;
@@ -29,14 +29,14 @@ public class SimpleForm extends CloseableForm {
         this(title, content,null);
     }
 
-    public SimpleForm(String title, String content, NoneHandler noneHandler){
+    public SimpleForm(String title, String content, OnCloseFormHandler noneHandler){
         this(title, content, noneHandler, null);
     }
 
-    public SimpleForm(String title, String content, NoneHandler noneHandler, Collection<Button> buttons){
+    public SimpleForm(String title, String content, OnCloseFormHandler noneHandler, Collection<Button> buttons){
         this.title = title;
         this.content = content;
-        this.noneHandler = noneHandler;
+        this.onCloseHandler = noneHandler;
 
         if(buttons == null) return;
         for(Button button: buttons) add(button);

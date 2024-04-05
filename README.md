@@ -33,7 +33,7 @@ form.setContent("This is a text")
     .add(new Button("Same button but with image", Button.Icon.texture("textures/items/diamond"), handler));
 
 //We can set handler for null result
-form.setNoneHandler(p -> {
+form.setOnCloseHandler(p -> {
     p.sendMessage("Why you closed this form? :c");
 });
 
