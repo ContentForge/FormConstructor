@@ -3,6 +3,13 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-2.0.0-brightgreen)](https://github.com/ContentForge/FormConstructor/releases/tag/2.0.0)
 
+:warning:  Discontinued :warning: 
+======
+I stopped writing plugins for Nukkit and I don't see any point in supporting this project. 
+Use a good fork that my friend made: https://github.com/MEFRREEX/FormConstructor
+
+
+
 Introduction
 ------------- 
 
